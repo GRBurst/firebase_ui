@@ -54,9 +54,10 @@ class _LoginViewState extends State<LoginView> {
       GoogleSignInAuthentication googleAuth = await googleUser.authentication;
       if (googleAuth.accessToken != null) {
         try {
-          AuthCredential credential = GoogleAuthProvider.getCredential(
+          AuthCredential credential = GoogleAuthProvider.credential(
               idToken: googleAuth.idToken, accessToken: googleAuth.accessToken);
-          UserCredential authResult = await _auth.signInWithCredential(credential);
+          UserCredential authResult =
+              await _auth.signInWithCredential(credential);
           User user = authResult.user;
           print(user);
         } catch (e) {
@@ -70,8 +71,10 @@ class _LoginViewState extends State<LoginView> {
     FacebookLoginResult result = await facebookLogin.logIn(['email']);
     if (result.accessToken != null) {
       try {
-        AuthCredential credential = FacebookAuthProvider.credential(result.accessToken.token);
-        UserCredential authResult = await _auth.signInWithCredential(credential);
+        AuthCredential credential =
+            FacebookAuthProvider.credential(result.accessToken.token);
+        UserCredential authResult =
+            await _auth.signInWithCredential(credential);
         User user = authResult.user;
         print(user);
       } catch (e) {
@@ -90,7 +93,8 @@ class _LoginViewState extends State<LoginView> {
 
     switch (result.status) {
       case TwitterLoginStatus.loggedIn:
-        AuthCredential credential = TwitterAuthProvider.credential(accessToken:result.session.token,secret: result.session.secret);
+        AuthCredential credential = TwitterAuthProvider.credential(
+            accessToken: result.session.token, secret: result.session.secret);
         await _auth.signInWithCredential(credential);
         break;
       case TwitterLoginStatus.cancelledByUser:
@@ -119,7 +123,7 @@ class _LoginViewState extends State<LoginView> {
         final authResult = await _auth.signInWithCredential(credential);
         final firebaseUser = authResult.user;
         if (scopes.contains(Apple.Scope.fullName)) {
-         var displayName =
+          var displayName =
               '${appleIdCredential.fullName.givenName} ${appleIdCredential.fullName.familyName}';
           await firebaseUser.updateProfile(displayName: displayName);
         }
@@ -150,8 +154,8 @@ class _LoginViewState extends State<LoginView> {
               return Apple.AppleSignInButton(
                 style: Apple.ButtonStyle.white, // style as needed
                 type: Apple.ButtonType.signIn, // style as needed
-                onPressed: () =>
-                    _signInWithApple(scopes: [Apple.Scope.email,Apple.Scope.fullName]),
+                onPressed: () => _signInWithApple(
+                    scopes: [Apple.Scope.email, Apple.Scope.fullName]),
               );
             } else {
               return Container();

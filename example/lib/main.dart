@@ -130,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
 class HomeScreen extends StatelessWidget {
   HomeScreen({this.user});
 
-  final FirebaseUser user;
+  final User user;
 
   void _logout() {
     signOutProviders();
