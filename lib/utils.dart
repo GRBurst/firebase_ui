@@ -144,9 +144,9 @@ Future<void> signOutProviders() async {
   return await FirebaseAuth.instance.signOut();
 }
 
-Future<dynamic> signOut(Iterable providers) async {
-  return Future.forEach(providers, (p) async {
-    switch (p.providerId) {
+Future<dynamic> signOut(Iterable<dynamic> providers) async {
+  return Future.forEach(providers, (dynamic p) async {
+    switch (p!.providerId) {
       case 'facebook.com':
         await facebookLogin.logOut();
         break;
