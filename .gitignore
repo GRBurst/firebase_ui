@@ -10,4 +10,9 @@ packages
 pubspec.lock
 
 example/ios/Flutter/flutter_export_environment.sh
+
+example/android/app/.settings/org.eclipse.jdt.core.prefs
+
 example/.flutter-plugins-dependencies
+
+example/android/app/google-services.json

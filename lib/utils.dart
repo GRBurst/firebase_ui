@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-enum ProvidersTypes { email, google, facebook, twitter, guest, phone }
+enum ProvidersTypes { email, google, facebook, twitter, guest, phone, guest }
 
 final GoogleSignIn googleSignIn = new GoogleSignIn();
 final FacebookLogin facebookLogin = new FacebookLogin();
@@ -145,7 +145,7 @@ Future<Null> showErrorDialog(BuildContext context, String message, {String title
 }
 
 Future<void> signOutProviders() async {
-  var currentUser = await FirebaseAuth.instance.currentUser();
+  var currentUser =  FirebaseAuth.instance.currentUser;
   if (currentUser != null) {
     await signOut(currentUser.providerData);
   }
