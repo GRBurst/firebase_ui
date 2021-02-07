@@ -15,8 +15,10 @@ dependencies:
 
   device_info: ^0.4.2+4
 
+  http: ^0.12.2
+
   firebase_auth: ^0.20.0+1 
-  firebase_auth_platform_interface: ^2.0.0
+  firebase_auth_platform_interface: ^3.0.1
 
   google_sign_in: ^4.5.1
   # flutter_facebook_login: ^3.0.0
